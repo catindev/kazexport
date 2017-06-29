@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Export.gov.kz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills float-right">
+                    <li class="nav-item">
+                        <a class="nav-link active" form="signForm">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" form="regForm">Регистрация</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">KAZAKH INVEST</h3>
+        </div>
+
+        <form class="signForm k-form" id="signForm">
+            <h1>Вход в личный кабинет</h1>
+            <div class="alert alert-danger" id="LoginError">
+                Неправильный логин или пароль
+            </div>
+            <fieldset>
+                <div class="form-group">
+                    <label for="login">Логин</label>
+                    <input type="text" class="form-control" id="login" name="elogin" />
+                    <small class="form-text text-muted">
+                        Телефон или email для физ. лиц или БИН для юр. лиц
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="login">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="epassword" />
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+
+        <form class="k-form" id="regForm">
+            <h1>Регистрация на портале</h1>
+            <fieldset style="padding-bottom: 1rem;">
+                <label style="display:block;padding-top: 10px;">Я регистрируюсь как</label>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="userType" value="user">
+                    Физ. лицо
+                </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="userType" value="company">
+                    Компания
+                </label>
+                </div>
+            </fieldset>
+
+            <fieldset class="hiddenSet js-childForm" account-type="user" style="padding-bottom: 2rem;">
+                <div class="form-group">
+                    <label for="login">Телефон или эл.почта</label>
+                    <input type="text" class="form-control" id="userLogin" name="userLogin" />
+                    <small class="form-text text-muted">
+                        Для доступа к личному кабинету
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="login">ИИН</label>
+                    <input type="password" class="form-control" id="password" name="inn" />
+                    <small class="form-text text-muted">
+                        Для восстановления доступа к личному кабинету
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="login">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="inn" />
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div class="form-check">
+                        <label class="form-check-label" style="font-size: 12px">
+                            <input type="checkbox" class="form-check-input" checked>
+                            Я ознакомился и согласен с <a>пользовательским соглашением</a> и уведомлением о <a>правилах использования персональных данных</a> пользователя
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </fieldset>
+
+            <fieldset class="hiddenSet js-childForm" account-type="company" style="padding-bottom: 2rem;">
+                <label style="display:block;">Компания</label>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="companyType" id="inlineRadio1" value="export">
+                    Экспортер
+                </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="companyType" value="import">
+                        Импортер
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="companyType" value="other">
+                        Другая
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset class="hiddenSet js-childForm" company-type="export" style="padding-bottom: 2rem;">
+                <div class="form-group">
+                    <label for="login">Название компании</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="login">БИН</label>
+                    <input type="password" class="form-control" id="password" name="inn" />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Форма собственности</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option></option>
+                        <option>ИП</option>
+                        <option>ТОО</option>
+                        <option>АО</option>
+                    </select>
+                </div>
+
+                <div style="padding-top: 15px;padding-bottom: 15px;">
+                    <div class="form-group">
+                        <label for="login">Телефон</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="login">Адрес эл. почты</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="login">Юрдический адрес</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>Область</option>
+                                        <option>Акмолинская</option>
+                                        <option>Актюбинская</option>
+                                        <option>Алматинская</option>
+                                        <option>Атырауская</option>
+                                        <option>Восточно-Казахстанская</option>
+                                        <option>Жамбылская</option>
+                                        <option>Западно-Казахстанская</option>
+                                        <option>Карагандинская</option>
+                                        <option>Костанайская</option>
+                                        <option>Кызылординская</option>
+                                        <option>Мангистауская</option>
+                                        <option>Павлодарская</option>
+                                        <option>Северо-Казахстанская</option>
+                                        <option>Южно-Казахстанская</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>Город</option>
+                                        <option>Астана</option>
+                                        <option>Алматы</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Отрасль</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option></option>
+                        <option>Минеральные продукты</option>
+                        <option>Металлы и изделия из них</option>
+                        <option>Продукция химической и связанных с ней отраслей промышленности (включая каучуки и пластмассы</option>
+                        <option>Продукты животного и растительного происхождения, готовые продовольственные товары</option>
+                        <option>Машины, оборудование, транспортные средства, приборы и аппараты</option>
+                        <option>Текстиль и текстильные изделия</option>
+                        <option>Древесина, лесоматериалы и целлюлозно-бумажные изделия</option>
+                        <option>Кожевенное сырье, пушнина и изделия из них</option>
+                        <option>Строительные материалы</option>
+                        <option>Обувь, головные изделия и галантерейные товары</option>
+                        <option>Прочие товары</option>
+                    </select>
+                </div>
+
+                <label style="display:block;padding-top: 10px;">Компания производит или перепродает?</label>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+                        Производит
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+                        Перепродает
+                    </label>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div class="form-check">
+                        <label class="form-check-label" style="font-size: 12px">
+                            <input type="checkbox" class="form-check-input" checked>
+                            Я ознакомился и согласен с <a>пользовательским соглашением</a> и уведомлением о <a>правилах использования персональных данных</a> пользователя
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </fieldset>
+
+            <fieldset class="hiddenSet js-childForm" company-type="import">
+                <div class="form-group">
+                    <label for="login">Название компании</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="login">Телефон</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="login">Адрес эл. почты</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Страна</label>
+                    <select class="form-control">
+                        <option></option>
+                        <option>РФ</option>
+                        <option>Китай</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div class="form-check">
+                        <label class="form-check-label" style="font-size: 12px">
+                            <input type="checkbox" class="form-check-input" checked>
+                            Я ознакомился и согласен с <a>пользовательским соглашением</a> и уведомлением о <a>правилах использования персональных данных</a> пользователя
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </fieldset>
+
+            <fieldset class="hiddenSet js-childForm" company-type="other">
+                <div class="form-group">
+                    <label for="login">Название компании</label>
+                    <input type="text" class="form-control" id="userLogin" name="userLogin" />
+                </div>
+                <div class="form-group">
+                    <label>Тип компании</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option></option>
+                        <option>Орган государственного управления</option>
+                        <option>Орган местного управления</option>
+                        <option>Бизнес-объединение</option>
+                        <option>Специализированная организация</option>
+                        <option>Институт развития</option>
+                        <option>Консалтинг</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div class="form-check">
+                        <label class="form-check-label" style="font-size: 12px">
+                            <input type="checkbox" class="form-check-input" checked>
+                            Я ознакомился и согласен с <a>пользовательским соглашением</a> и уведомлением о <a>правилах использования персональных данных</a> пользователя
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/login.js"></script>
+<script src="js/registration.js"></script>
+
+</html>
